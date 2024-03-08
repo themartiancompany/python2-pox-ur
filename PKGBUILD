@@ -1,4 +1,7 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 
 _py="python2"
 _pkg="pox"
@@ -7,9 +10,14 @@ pkgver=0.2.9
 pkgrel=1
 pkgdesc="Utilities for filesystem exploration and automated builds"
 _ns="uqfoundation"
-url="https://github.com/${_ns}/${_pkg}"
-arch=(any)
-license=('BSD')
+_gh="https://github.com"
+url="${_gh}/${_ns}/${_pkg}"
+arch=(
+  any
+)
+license=(
+  'BSD'
+)
 depends=(
   "${_py}"
 )
@@ -25,14 +33,21 @@ sha256sums=(
 )
 
 build() {
-  cd "${srcdir}/${_pkg}-${pkgver}"
-  "${_py}" setup.py build
+  cd \
+    "${srcdir}/${_pkg}-${pkgver}"
+  "${_py}" \
+    setup.py \
+      build
 }
 
 package() {
-  cd "${srcdir}/${_pkg}-${pkgver}"
-  "${_py}" setup.py install --root="${pkgdir}" \
-                            --optimize=1
+  cd \
+    "${srcdir}/${_pkg}-${pkgver}"
+  "${_py}" \
+    setup.py \
+      install \
+        --root="${pkgdir}" \
+        --optimize=1
 }
 
 # vim:set sw=2 sts=-1 et:
